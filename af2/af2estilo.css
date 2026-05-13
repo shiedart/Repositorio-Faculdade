@@ -38,6 +38,10 @@ input , select {
     box-shadow: 0 0 5px #bebebe;
 }
 
+#ogenero {
+    display: none; 
+    margin-top: 10px;
+}
 
 input:valid {
     border: 2px solid green;
