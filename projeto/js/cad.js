@@ -117,3 +117,33 @@ const pesquisarCep = async() => {
 };
 
 document.getElementById("cep").addEventListener("focusout", pesquisarCep);
+
+document.getElementById("cpfForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+    
+	// pega os usuarios cadastrados
+    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    let usuario = {
+
+        nome: document.getElementById("nome").value,
+        email: document.getElementById("email").value,
+        senha: document.getElementById("senha").value,
+        cpf: document.getElementById("cpf").value
+
+    };
+
+    usuarios.push(usuario);
+    
+	// salva no navegador
+    localStorage.setItem(
+        "usuarios",
+        JSON.stringify(usuarios)
+    );
+
+    alert("Cadastro realizado!");
+
+    window.location.href = "login.html";
+
+});
