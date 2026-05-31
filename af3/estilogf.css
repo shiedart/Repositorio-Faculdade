@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: #2c3e50;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#listaCampos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.campo-grupo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #fafbfc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.campo-grupo:hover {
+    border-color: #cbd5e1;
+    background-color: #f8fafc;
+}
+
+.campo-grupo input[type="text"] {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.campo-grupo input[type="text"]:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.campo-grupo input[readonly] {
+    background-color: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+.campo-grupo label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.campo-grupo input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.btn-container {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    flex: 1;
+    min-width: 140px;
+    max-width: 200px;
+    text-align: center;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#btnAdicionar {
+    background-color: #3b82f6;
+    color: white;
+}
+
+#btnAdicionar:hover {
+    background-color: #2563eb;
+}
+
+button[type="submit"] {
+    background-color: #10b981;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #059669;
+}
+
+.btn-remover {
+    background-color: #ef4444;
+    color: white;
+    padding: 8px 12px;
+    flex: none;
+    min-width: auto;
+    max-width: auto;
+}
+
+.btn-remover:hover {
+    background-color: #dc2626;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    .campo-grupo {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .campo-grupo input[type="text"] {
+        width: 100%;
+        flex: 1 0 100%;
+    }
+    .btn-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    button {
+        width: 100%;
+        max-width: 100%;
+    }
+}
