@@ -1,4 +1,4 @@
-@charset "UTF-8";
+/*@charset "UTF-8";
 
 /* ===== BODY ===== */
 body {
@@ -23,7 +23,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} 
 
 /* LINKS */
 nav > a {

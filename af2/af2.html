@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="af2estilo.css">
+    <script src="jsaf2.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Avaliação Formadora 2</title>
+</head>
+<body>
+    <header>
+        <h1>Avaliação Formadora II: Criação de um Sistema de Cadastro de Usuários</h1>
+    </header>
+    <main>
+        <form id="aform">
+            <label for="nomec">Nome Completo:</label>
+            <input type="text" id="nomec" name="nomec" pattern="[a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÊÍÏÓÔÕÖÚÇÑ\s]+$" required placeholder="Digite seu nome completo">
+
+            <span id="snome">Apenas letras no nome</span>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required placeholder="aaaaa@gmail.com">
+
+            <span id="smail">Algo está errado! confirme o email.</span>
+
+            <label for="dnasc">Data de Nascimento:</label>
+            <input type="date" name="dnasc" id="dnasc" required>
+
+            <label for="genero">Gênero:</label>
+            <select name="genero" id="genero" required>
+                <option value="" disabled selected>Selecione uma Opção</option>
+                <option value="cis">Cisgênero</option>
+                <option value="trans">Transgênero/Transexual</option>
+                <option value="nb">Não-binário</option>
+                <option value="gf">Gênero Fluido</option>
+                <option value="agenero">Agênero</option>
+                <option value="outros">Outros</option>
+            </select>
+
+            <input type="text" id="ogenero" name="ogenero"placeholder="Digite seu gênero">
+
+
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}" required title="A senha deve ter no mínimo 6 caracteres, incluindo pelo menos uma letra maiúscula, uma minúscula e um caractere especial." placeholder="Digite a sua senha">
+
+
+            <span id="ssenha">Algo está errado! confirme a senha.</span>
+
+
+            <p>A senha deve ter no mínimo 6 caracteres, incluindo pelo menos uma letra maiúscula, uma minúscula e um caractere especial. Ex: !@#$%^&*</p>
+
+
+            <br>
+            <label for="consenha">Confirme a senha:</label>
+            <input type="password" name="consenha" id="consenha" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{6,}" required title="A senha deve ter no mínimo 6 caracteres, incluindo pelo menos uma letra maiúscula, uma minúscula e um caractere especial." required placeholder="Confirmar senha">
+
+            <span id="scsenha">Algo está errado! confirme a senha.</span>
+            
+
+            <button type="submit" onclick="return validarSenha()">Cadastrar</button>
+        </form>
+    <main> 
+
+    <footer>
+        <p>Feito por Cauã Felipe</p>
+    </footer>
+</body>
+</html>

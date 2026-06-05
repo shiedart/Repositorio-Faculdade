@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: whitesmoke;
+}
+
+body {}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 35px;
+}
+
+p {
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0px auto;
+    background: #fff;
+    padding: 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+}
+
+input , select {
+    width: 280px;
+    padding: 8px;
+    margin: 8px 0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #bebebe;
+}
+
+#ogenero {
+    display: none; 
+    margin-top: 10px;
+}
+
+input:valid {
+    border: 2px solid green;
+}
+
+input:user-invalid {
+    border: 2px solid red;
+}
+
+
+
+button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    background: blue;
+    color: white;
+    border: none;
+    cursor: pointer; 
+}
+
+#snome , #ssenha , #scsenha{
+    display: none;
+    color: red;
+    font-size: 12px;
+    }
+
+    #nomec:user-invalid + #snome , #senha:user-invalid + #ssenha , #consenha:user-invalid + #scsenha {
+        display: block;
+    }
+
+
+footer {
+    display: flex;
+    justify-content: center;
+}
+

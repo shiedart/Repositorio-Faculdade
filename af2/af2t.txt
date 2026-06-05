@@ -1,0 +1,32 @@
+
+REQUISITOS FUNCIONAIS
+
+1. O sistema deve permitir o cadastro de usuários.
+2. O sistema deve solicitar:
+
+Nome completo
+
+E-mail
+
+Data de nascimento
+
+Gênero
+
+Senha
+
+Confirmação de senha
+
+3. O campo nome deve ser obrigatório.
+4. O campo e-mail deve validar formato correto.
+5. A senha deve possuir no minimo 6 caracteres.
+6. O usuário deve confirmar a senha.
+
+
+REQUISITOS NÃO FUNCIONAIS
+
+
+1. O sistema deve ser responsivo.
+2. O layout deve utilizar CSS3.
+3. O sistema deve utilizar HTML5 semantico.
+4. O formulário deve possuir validação visual.
+5. O sistema deve ter Interface simples e organizada.
