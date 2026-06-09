@@ -4,19 +4,15 @@ navigator.geolocation.getCurrentPosition(
         const lat = posicao.coords.latitude;
         const lng = posicao.coords.longitude;
 
-        /* Cria o mapa */
         const map = L.map("mapa").setView([lat, lng], 14);
 
-        /* Camada do OpenStreetMap */
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution: "&copy; OpenStreetMap contributors"}).addTo(map);
 
-        /* Marcador do usuário */
         L.marker([lat, lng])
             .addTo(map)
             .bindPopup("Você está aqui!")
             .openPopup();
 
-        /* Consulta à Overpass API */
         const query = `[out:json];
         (
             node["leisure"="fitness_centre"](around:5000,${lat},${lng});

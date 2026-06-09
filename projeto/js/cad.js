@@ -1,5 +1,3 @@
-
-        // 3. Aplicar a máscara quando o documento estiver pronto
         $(document).ready(function(){
             $('#cpf').mask('000.000.000-00');
             $('#celular').mask('(00) 00000-0000');
@@ -55,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function limpa_formulário_cep() {
-            //Limpa valores do formulário de cep.
+            
             document.getElementById('rua').value=("");
             document.getElementById('bairro').value=("");
             document.getElementById('cidade').value=("");
@@ -65,15 +63,15 @@ function limpa_formulário_cep() {
 
     function meu_callback(conteudo) {
         if (!("erro" in conteudo)) {
-            //Atualiza os campos com os valores.
+            
             document.getElementById('rua').value=(conteudo.logradouro);
             document.getElementById('bairro').value=(conteudo.bairro);
             document.getElementById('cidade').value=(conteudo.localidade);
             document.getElementById('uf').value=(conteudo.uf);
             document.getElementById('ibge').value=(conteudo.ibge);
-        } //end if.
+        } 
         else {
-            //CEP não Encontrado.
+            
             limpa_formulário_cep();
             alert("CEP não encontrado.");
         }
