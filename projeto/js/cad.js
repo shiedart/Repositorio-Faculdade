@@ -1,147 +1,161 @@
-        $(document).ready(function(){
-            $('#cpf').mask('000.000.000-00');
-            $('#celular').mask('(00) 00000-0000');
-            $('#cep').mask('00000-000');
+  const FIELDS = ['nome','celular','email','cpf','genero','nasc','cep','cidade','estado','bairro','rua','numero','complemento'];
+  const LABELS = {
+    nome:'Nome', celular:'Celular', email:'E-mail', cpf:'CPF',
+    genero:'Gênero', nasc:'Nascimento', cep:'CEP', cidade:'Cidade',
+    estado:'Estado', bairro:'Bairro', rua:'Rua', numero:'Número', complemento:'Complemento'
+  };
 
-        });
+  function saveToStorage() {
+    const data = {};
+    FIELDS.forEach(id => { data[id] = document.getElementById(id).value; });
+    data._savedAt = new Date().toLocaleString('pt-BR');
+    localStorage.setItem('cadastro', JSON.stringify(data));
+  }
 
+  function loadFromStorage() {
+    const raw = localStorage.getItem('cadastro');
+    if (!raw) return;
+    try {
+      const data = JSON.parse(raw);
+      FIELDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && data[id]) el.value = data[id];
+      });
+    } catch(e) {}
+  }
 
+  FIELDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', saveToStorage);
+    if (el) el.addEventListener('change', saveToStorage);
+  });
 
-function validaCPF(cpf) {
-	cpf = cpf.replace(/\D+/g, '');
-	if (cpf.length !== 11) return false;
+  document.getElementById('celular').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'').slice(0,11);
+    if (v.length > 6) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+    else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+    else if (v.length > 0) v = '(' + v;
+    this.value = v;
+  });
 
-	let soma = 0;
-	let resto;
-	if (/^(\d)\1{10}$/.test(cpf)) return false;
+  document.getElementById('cpf').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'').slice(0,11);
+    if (v.length > 9) v = v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6,9)+'-'+v.slice(9);
+    else if (v.length > 6) v = v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6);
+    else if (v.length > 3) v = v.slice(0,3)+'.'+v.slice(3);
+    this.value = v;
+  });
 
-	for (let i = 1; i <= 9; i++) soma += parseInt(cpf.substring(i-1, i)) * (11 - i);
-	resto = (soma * 10) % 11;
-	if ((resto === 10) || (resto === 11)) resto = 0;
-	if (resto !== parseInt(cpf.substring(9, 10))) return false;
+  document.getElementById('cep').addEventListener('input', function() {
+    let v = this.value.replace(/\D/g,'').slice(0,8);
+    if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5);
+    this.value = v;
+    if (v.replace(/\D/g,'').length === 8) fetchCEP(v.replace(/\D/g,''));
+  });
 
-	soma = 0;
-	for (let i = 1; i <= 10; i++) soma += parseInt(cpf.substring(i-1, i)) * (12 - i);
-	resto = (soma * 10) % 11;
-	if ((resto === 10) || (resto === 11)) resto = 0;
-	if (resto !== parseInt(cpf.substring(10, 11))) return false;
+  async function fetchCEP(cep) {
+    const hint = document.getElementById('cep-hint');
+    hint.textContent = 'Buscando endereço...';
+    try {
+      const r = await fetch('https://viacep.com.br/ws/'+cep+'/json/');
+      const d = await r.json();
+      if (d.erro) { hint.textContent = 'CEP não encontrado.'; return; }
+      document.getElementById('rua').value = d.logradouro || '';
+      document.getElementById('bairro').value = d.bairro || '';
+      document.getElementById('cidade').value = d.localidade || '';
+      const sel = document.getElementById('estado');
+      for (let i=0; i<sel.options.length; i++) {
+        if (sel.options[i].value === d.uf) { sel.selectedIndex = i; break; }
+      }
+      hint.textContent = d.bairro + ', ' + d.localidade + ' - ' + d.uf;
+      saveToStorage();
+    } catch(e) { hint.textContent = 'Não foi possível buscar o CEP.'; }
+  }
 
-	return true;
-}
+  function setError(fieldId, hasError) {
+    document.getElementById(fieldId).classList.toggle('has-error', hasError);
+    return !hasError;
+  }
 
-document.addEventListener('DOMContentLoaded', function() {
-	document.getElementById('cpfForm').addEventListener('submit', function(e) {
-		var cpf = document.getElementById('cpf').value;
-		if (!validaCPF(cpf)) {
-			e.preventDefault();
-			alert('CPF inválido. Verifique o número digitado.');
-			document.getElementById('cpf').focus();
-		}
-	});
+  function validateStep1() {
+    const nome = document.getElementById('nome').value.trim();
+    const cel = document.getElementById('celular').value.replace(/\D/g,'');
+    const email = document.getElementById('email').value.trim();
+    const v1 = setError('f-nome', nome.split(' ').filter(Boolean).length < 2);
+    const v2 = setError('f-celular', cel.length < 10);
+    const v3 = setError('f-email', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+    return v1 && v2 && v3;
+  }
 
-	document.getElementById('cpf').addEventListener('input', function(e) {
-		var value = e.target.value;
-		var cpfPattern = value.replace(/\D/g, '')
-							  .replace(/(\d{3})(\d)/, '$1.$2')
-							  .replace(/(\d{3})(\d)/, '$1.$2')
-							  .replace(/(\d{3})(\d)/, '$1-$2')
-							  .replace(/(-\d{2})\d+?$/, '$1');
-		e.target.value = cpfPattern;
-	});
-});
+  function validateStep2() {
+    const cpf = document.getElementById('cpf').value.replace(/\D/g,'');
+    const gen = document.getElementById('genero').value;
+    const nasc = document.getElementById('nasc').value;
+    const today = new Date();
+    const nascDate = new Date(nasc);
+    const age = today.getFullYear() - nascDate.getFullYear();
+    const v1 = setError('f-cpf', cpf.length !== 11);
+    const v2 = setError('f-genero', !gen);
+    const v3 = setError('f-nasc', !nasc || age < 0 || age > 120);
+    return v1 && v2 && v3;
+  }
 
+  function goStep(n) {
+    if (n === 2 && !validateStep1()) return;
+    if (n === 3 && !validateStep2()) return;
+    saveToStorage();
 
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel'+n).classList.add('active');
 
-function limpa_formulário_cep() {
-            
-            document.getElementById('rua').value=("");
-            document.getElementById('bairro').value=("");
-            document.getElementById('cidade').value=("");
-            document.getElementById('uf').value=("");
-            document.getElementById('ibge').value=("");
+    for (let i = 1; i <= 3; i++) {
+      const dot = document.getElementById('dot'+i);
+      dot.classList.remove('active','done');
+      if (i < n) { dot.classList.add('done'); dot.textContent = '✓'; }
+      else if (i === n) { dot.classList.add('active'); dot.textContent = i; }
+      else { dot.textContent = i; }
     }
-
-    function meu_callback(conteudo) {
-        if (!("erro" in conteudo)) {
-            
-            document.getElementById('rua').value=(conteudo.logradouro);
-            document.getElementById('bairro').value=(conteudo.bairro);
-            document.getElementById('cidade').value=(conteudo.localidade);
-            document.getElementById('uf').value=(conteudo.uf);
-            document.getElementById('ibge').value=(conteudo.ibge);
-        } 
-        else {
-            
-            limpa_formulário_cep();
-            alert("CEP não encontrado.");
-        }
+    for (let i = 1; i <= 2; i++) {
+      document.getElementById('line'+i).classList.toggle('done', i < n);
     }
-        
-const eNumero = (numero) => /^[0-9]+$/.test(numero);
+  }
 
-const cepValido = (cep) => cep.length == 8 && eNumero(cep);
+  function submitForm() {
+    saveToStorage();
 
-const limparFormulario = () => {
-	document.getElementById("endereco").value = "";
-	document.getElementById("bairro").value = "";
-	document.getElementById("cidade").value = "";
-	document.getElementById("estado").value = "";
-};
+    const data = JSON.parse(localStorage.getItem('cadastro') || '{}');
+    const showFields = ['nome','celular','email','cpf','genero','nasc','cep','cidade','estado','bairro','rua','numero','complemento'];
+    let rows = '';
+    showFields.forEach(id => {
+      const val = data[id];
+      if (val) rows += `<tr><td>${LABELS[id]}</td><td><strong>${val}</strong></td></tr>`;
+    });
+    if (data._savedAt) rows += `<tr><td>Salvo em</td><td style="color:#aaa">${data._savedAt}</td></tr>`;
+    document.getElementById('summary-table').innerHTML = rows;
 
-const preencherFormulario = (endereco) => {
-	document.getElementById("endereco").value = endereco.logradouro;
-	document.getElementById("bairro").value = endereco.bairro;
-	document.getElementById("cidade").value = endereco.localidade;
-	document.getElementById("estado").value = endereco.uf;
-};
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-done').classList.add('active');
+    for (let i = 1; i <= 3; i++) {
+      const dot = document.getElementById('dot'+i);
+      dot.classList.remove('active'); dot.classList.add('done'); dot.textContent = '✓';
+    }
+    document.getElementById('line1').classList.add('done');
+    document.getElementById('line2').classList.add('done');
+    document.getElementById('nome-final').textContent = document.getElementById('nome').value.trim().split(' ')[0];
+  }
 
-const pesquisarCep = async() => {
-	limparFormulario();
+  function novocadastro() {
+    localStorage.removeItem('cadastro');
+    FIELDS.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel1').classList.add('active');
+    for (let i = 1; i <= 3; i++) {
+      const dot = document.getElementById('dot'+i);
+      dot.classList.remove('active','done'); dot.textContent = i;
+    }
+    document.getElementById('dot1').classList.add('active');
+    document.getElementById('line1').classList.remove('done');
+    document.getElementById('line2').classList.remove('done');
+  }
 
-	const cep = document.getElementById("cep").value.replace("-", "");
-	const url = `https://viacep.com.br/ws/${cep}/json/`
-	if (cepValido(cep)) {
-		const dados = await fetch(url);
-		const endereco = await dados.json();
-		if (endereco.hasOwnProperty("erro")) {
-			document.getElementById("endereco").value = "CEP não encontrado!";
-		} else {
-			preencherFormulario(endereco); 
-		}
-	} else {
-		document.getElementById("endereco").value = "CEP incorreto!";
-	}
-
-};
-
-document.getElementById("cep").addEventListener("focusout", pesquisarCep);
-
-document.getElementById("cpfForm").addEventListener("submit", function(e){
-
-    e.preventDefault();
-    
-	// pega os usuarios cadastrados
-    let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-    let usuario = {
-
-        nome: document.getElementById("nome").value,
-        email: document.getElementById("email").value,
-        senha: document.getElementById("senha").value,
-        cpf: document.getElementById("cpf").value
-
-    };
-
-    usuarios.push(usuario);
-    
-	// salva no navegador
-    localStorage.setItem(
-        "usuarios",
-        JSON.stringify(usuarios)
-    );
-
-    alert("Cadastro realizado!");
-
-    window.location.href = "login.html";
-
-});
+  window.addEventListener('DOMContentLoaded', loadFromStorage);

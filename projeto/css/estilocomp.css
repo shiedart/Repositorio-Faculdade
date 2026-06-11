@@ -35,7 +35,6 @@ nav > a:hover {
     cursor: pointer;
 }
 
-/* BOTÃO DARK */
 #modoEscuro {
     position: absolute;
     right: 20px;
@@ -67,23 +66,23 @@ footer {
     padding: 20px;
 }
 
-/* 🌙 MODO ESCURO */
+
 body.dark-mode {
     background-color: #0f172a;
     color: #ffffff;
 }
-/* Navbar */
+
 body.dark-mode nav {
     background-color: #000;
 }
-/* Links */
+
 body.dark-mode nav > a {
     color: #ffffff;
 }
 body.dark-mode nav > a:hover {
     color: #bb86fc;
 }
-/* Botão muda cor */
+
 body.dark-mode #modoEscuro {
     color: #facc15;
 }
