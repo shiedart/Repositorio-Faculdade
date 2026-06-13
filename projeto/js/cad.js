@@ -182,6 +182,18 @@
     saveToStorage();
 
     const data = JSON.parse(localStorage.getItem('cadastro') || '{}');
+
+  data.senha = document.getElementById('senha').value;
+  let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+  let usuarioExistente = usuarios.findIndex(usuario => usuario.email === data.email);
+    if (usuarioExistente >= 0) {
+  usuarios[usuarioExistente] = data;
+    } else {
+  usuarios.push(data);
+}
+
+localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    
     // Campos exibidos no resumo (senha nunca é exibida)
     const showFields = ['nome','celular','email','cpf','genero','nasc','cep','cidade','estado','bairro','rua','numero','complemento'];
     let rows = '';
@@ -233,3 +245,26 @@
   }
 
   window.addEventListener('DOMContentLoaded', loadFromStorage);
+  
+// Editar Cadastro //
+  function editarCadastro() {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel1').classList.add('active');
+  document.getElementById('dot1').classList.add('active');
+  document.getElementById('dot2').classList.remove('active');
+  document.getElementById('dot3').classList.remove('active');
+  alert('Altere os dados desejados e clique em Cadastrar novamente.');
+}
+// Excluir Cadastro // 
+function excluirCadastro() {
+  const confirmar = confirm('Deseja realmente excluir seu cadastro?');
+  if (!confirmar) return;
+  const cadastro = JSON.parse(localStorage.getItem('cadastro')) || {};
+  let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+  usuarios = usuarios.filter(usuario => usuario.email !== cadastro.email);
+  localStorage.setItem('usuarios', JSON.stringify(usuarios));
+  localStorage.removeItem('cadastro');
+  localStorage.removeItem('usuarioLogado');
+  alert('Cadastro excluído com sucesso!');
+  novocadastro();
+}
