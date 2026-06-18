@@ -1,3 +1,5 @@
+const usuarioLogado = verificarLogin();
+
 navigator.geolocation.getCurrentPosition(
     async (posicao) => {
 
