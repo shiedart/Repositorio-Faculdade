@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/index.css">
+  <title>Minhas viagens | GoTogether</title>
+</head>
+<body class="my-trips-page">
+  <header class="site-header">
+    <nav class="navbar">
+      <a class="brand" href="index.html" aria-label="GoTogether - pagina inicial">GoTogether</a>
+
+      <ul class="menu">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="index.html#viagens">Descobrir viagens</a></li>
+        <li><a class="active" href="minhas-viagens.html" aria-current="page">Minhas viagens</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="login.html" class="login-btn">Login</a>
+        <a href="cadastro.html" class="signup-btn">Cadastro</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="my-trips-main">
+    <section class="my-trips-intro" aria-labelledby="my-trips-title">
+      <div>
+        <p class="section-kicker">PAINEL DE VIAGENS</p>
+        <h1 id="my-trips-title">Minhas viagens</h1>
+        <p>Organize os proximos roteiros e acompanhe as viagens que ja fizeram parte da sua historia.</p>
+      </div>
+      <a class="primary-btn" href="#criar-viagem">Criar nova viagem</a>
+    </section>
+
+    <section class="trip-summary" aria-label="Resumo das suas viagens">
+      <article class="summary-card">
+        <span class="summary-number">2</span>
+        <span class="summary-label">Proximas viagens</span>
+      </article>
+      <article class="summary-card">
+        <span class="summary-number">1</span>
+        <span class="summary-label">Viagem em planejamento</span>
+      </article>
+      <article class="summary-card">
+        <span class="summary-number">5</span>
+        <span class="summary-label">Viagens concluidas</span>
+      </article>
+    </section>
+
+    <section class="my-trips-section" aria-labelledby="upcoming-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">AGENDA</p>
+          <h2 id="upcoming-title">Proximas viagens</h2>
+        </div>
+      </div>
+
+      <div class="my-trips-grid">
+        <article class="my-trip-card">
+          <div class="trip-image">
+            <img src="../imagens/rjdejaneiro.jpg" alt="Vista da cidade do Rio de Janeiro">
+            <span class="trip-status confirmed">Confirmada</span>
+          </div>
+          <div class="my-trip-content">
+            <p class="trip-date">12 a 16 de outubro</p>
+            <h3>Fim de semana no Rio</h3>
+            <p class="trip-location">Rio de Janeiro, RJ</p>
+            <div class="trip-details">
+              <span>6 pessoas</span>
+              <span>4 dias</span>
+              <span>R$ 680 por pessoa</span>
+            </div>
+            <a class="trip-action" href="#detalhes-rio">Ver detalhes</a>
+          </div>
+        </article>
+
+        <article class="my-trip-card">
+          <div class="trip-image">
+            <img src="../imagens/camposdojordao.jpg" alt="Paisagem montanhosa em Campos do Jordao">
+            <span class="trip-status planning">Planejamento</span>
+          </div>
+          <div class="my-trip-content">
+            <p class="trip-date">8 a 10 de dezembro</p>
+            <h3>Inverno na serra</h3>
+            <p class="trip-location">Campos do Jordao, SP</p>
+            <div class="trip-details">
+              <span>4 pessoas</span>
+              <span>3 dias</span>
+              <span>Orcamento em definicao</span>
+            </div>
+            <a class="trip-action" href="#detalhes-serra">Continuar planejamento</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="my-trips-section completed-section" aria-labelledby="completed-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">MEMORIAS</p>
+          <h2 id="completed-title">Viagens concluidas</h2>
+        </div>
+      </div>
+
+      <div class="my-trips-grid">
+        <article class="my-trip-card compact-trip-card">
+          <div class="trip-image">
+            <img src="../imagens/maceio.jpg" alt="Mar azul de uma praia em Maceio">
+            <span class="trip-status completed">Concluida</span>
+          </div>
+          <div class="my-trip-content">
+            <p class="trip-date">18 a 23 de janeiro de 2026</p>
+            <h3>Ferias no litoral</h3>
+            <p class="trip-location">Maceio, AL</p>
+            <div class="trip-details">
+              <span>5 pessoas</span>
+              <span>6 dias</span>
+            </div>
+            <a class="trip-action" href="#detalhes-maceio">Rever viagem</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="sobre">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">GoTogether</a>
+        <p>Viagens em grupo, organizadas em um so lugar.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html#viagens">Descobrir viagens</a>
+        <a href="minhas-viagens.html">Minhas viagens</a>
+        <a href="login.html">Entrar</a>
+      </div>
+    </div>
+    <p class="copyright">Copyright 2026 GoTogether. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
