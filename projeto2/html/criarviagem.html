@@ -1,91 +1,157 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/criarviagem.css">
-    <link rel="stylesheet" href="../css/index.css">
     <title>Criar Nova Viagem</title>
 </head>
 
 <body>
 
-    <header class="site-header">
-    <nav class="navbar">
-      <a class="brand" href="index.html" aria-label="GoTogether - pagina inicial">GoTogether</a>
+    <div class="pagina">
 
-      <ul class="menu">
-        <li><a href="../index.html">Inicio</a></li>
-        <li><a href="index.html#viagens">Descobrir viagens</a></li>
-        <li><a class="active" href="minhas-viagens.html" aria-current="page">Minhas viagens</a></li>
-        <li><a href="index.html#sobre">Sobre</a></li>
-      </ul>
+        <div class="card-lateral">
 
-      <div class="nav-actions">
-        <a href="login.html" class="login-btn">Login</a>
-        <a href="cadastro.html" class="signup-btn">Cadastro</a>
-      </div>
-    </nav>
-  </header>
+            <div class="imagem">
+                <img src="../imagens/bondinhorj.jpeg" alt="Imagem de viagem">
+            </div>
 
-    <section>
+            <div class="mensagem">
+                <h2>Transforme planos<br>em histórias reais</h2>
 
-        <form action="#" method="POST">
+                <p>
+                    Crie sua viagem, reúna seu grupo
+                    e viva novas experiências!
+                </p>
+            </div>
 
-            <fieldset>
+            <p class="frase">
+                ✈️ Viagens em grupo são mais divertidas!
+            </p>
 
-                <legend>Informações da Viagem</legend>
+        </div>
 
-                <div class="container">
-                    <h1>Criar Nova Viagem</h1>
-                </div>
+        <section>
 
-                <div class="linha">
+            <form action="#" method="POST">
 
-                    <div class="campo">
-                        <label for="nome">Nome da viagem</label>
-                        <input type="text" id="nome" name="nome" required>
+                <fieldset>
+
+                    <legend>Informações da Viagem</legend>
+
+                    <h1> Criar Nova Viagem</h1>
+
+                    <p class="subtitulo">
+                        Preencha as informações abaixo para planejar
+                        sua próxima aventura com o seu grupo!
+                    </p>
+
+                    <div class="linha">
+
+                        <div class="campo">
+                            <label for="nome">Nome da viagem</label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                name="nome"
+                                placeholder="Ex: Férias em Gramado"
+                                required
+                            >
+                        </div>
+
                     </div>
 
-                    <div class="campo">
-                        <label for="orcamento">Orçamento</label>
-                        <input type="number" id="orcamento" name="orcamento" required>
+                    <div class="linha">
+
+                        <div class="campo">
+                            <label for="destino">Destino</label>
+
+                            <input
+                                type="text"
+                                id="destino"
+                                name="destino"
+                                placeholder="Ex: Rio de Janeiro"
+                                required
+                            >
+                        </div>
+
                     </div>
 
-                </div>
 
-                <div class="linha">
+                    <div class="linha">
 
-                    <div class="campo">
-                        <label for="data_inicio">Data de início</label>
-                        <input type="date" id="data_inicio" name="data_inicio" required>
+                        <div class="campo">
+                            <label for="data_inicio">Data de início</label>
+
+                            <input
+                                type="date"
+                                id="data_inicio"
+                                name="data_inicio"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="campo">
+                            <label for="data_fim">Data de fim</label>
+
+                            <input
+                                type="date"
+                                id="data_fim"
+                                name="data_fim"
+                                required
+                            >
+                        </div>
+
                     </div>
 
-                    <div class="campo">
-                        <label for="data_fim">Data de fim</label>
-                        <input type="date" id="data_fim" name="data_fim" required>
+
+                    <div class="linha">
+
+                        <div class="campo">
+                            <label for="orcamento">Orçamento</label>
+
+                            <input
+                                type="number"
+                                id="orcamento"
+                                name="orcamento"
+                                placeholder="Ex: 2500"
+                                required
+                            >
+                        </div>
+
                     </div>
 
-                </div>
 
-                <div class="linha">
+                    <div class="linha">
 
-                    <div class="campo">
-                        <label for="destino">Destino</label>
-                        <input type="text" id="destino" name="destino" required>
+                        <div class="campo">
+                            <label for="descricao">Descrição</label>
+
+                            <textarea
+                                id="descricao"
+                                name="descricao"
+                                rows="4"
+                                placeholder="Conte um pouco sobre essa viagem..."
+                                required
+                            ></textarea>
+                        </div>
+
                     </div>
 
-                    <div class="campo">
-                        <label for="descricao">Descrição</label>
-                        <textarea id="descricao" name="descricao" rows="4" required></textarea>
-                    </div>
+                    <input
+                        type="submit"
+                        value="✈️ Criar Viagem"
+                    >
 
-                </div>
-
-                <input type="submit" value="Criar Viagem">
-            </fieldset>
-        </form>
-    </section>
-   
+                </fieldset>
+            </form>
+        </section>
+    </div>
+    <script src="../Js/criarviagem.js"></script>
 </body>
+
 </html>
