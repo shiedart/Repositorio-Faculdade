@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f8;
+    color: #333;
+}
+
+.semi-header{
+    text-align: center;
+    padding: 40px;
+    background: #dce8e2;
+}
+
+.semi-header h1{
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+header p{
+    color: #666;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px;
+}
+
+.card{
+    width: 280px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover{
+    transform: translateY(-5px);
+}
+
+.card h2{
+    color: #5c7c6f;
+    margin-bottom: 15px;
+}
+
+.card p{
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.card a{
+    text-decoration: none;
+    background: #7ea68d;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.card a:hover{
+    background: #688b77;
+}
+
+body.dark-mode .semi-header {
+    background: #0f172a;
+    color: #ffffff;
+}
+body.dark-mode .semi-header p {
+    color: #cccccc;
+}
+body.dark-mode .container {
+    background: #0f172a;
+}
+body.dark-mode .card {
+    background: #ffffff;
+    color: #333333;
+}

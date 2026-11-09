@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="cadastro.js" defer></script>
+  <link rel="stylesheet" href="../css/darkmode.css">
+</head>
+<body>
+  <main>
+    <h1>Cadastro</h1>
+
+    <form id="form-cadastro" novalidate>
+
+      <fieldset>
+        <legend>Dados pessoais</legend>
+
+        <div class="campo">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" autocomplete="given-name" required aria-describedby="erro-nome">
+          <span class="erro" id="erro-nome" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="sobrenome">Sobrenome</label>
+          <input type="text" id="sobrenome" name="sobrenome" autocomplete="family-name" required aria-describedby="erro-sobrenome">
+          <span class="erro" id="erro-sobrenome" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="cpf">CPF</label>
+          <input type="text" id="cpf" name="cpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" required aria-describedby="erro-cpf">
+          <span class="erro" id="erro-cpf" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="nascimento">Data de nascimento</label>
+          <input type="date" id="nascimento" name="nascimento" autocomplete="bday" required aria-describedby="erro-nascimento">
+          <span class="erro" id="erro-nascimento" role="alert"></span>
+        </div>
+
+        <fieldset class="campo" aria-describedby="erro-genero">
+          <legend>Gênero</legend>
+          <label for="genero-feminino">
+            <input type="radio" id="genero-feminino" name="genero" value="Feminino" required> Feminino
+          </label>
+          <label for="genero-masculino">
+            <input type="radio" id="genero-masculino" name="genero" value="Masculino"> Masculino
+          </label>
+          <label for="genero-outro">
+            <input type="radio" id="genero-outro" name="genero" value="Outro"> Outro
+          </label>
+          <label for="genero-nao-informar">
+            <input type="radio" id="genero-nao-informar" name="genero" value="Prefiro não informar"> Prefiro não informar
+          </label>
+          <span class="erro" id="erro-genero" role="alert"></span>
+        </fieldset>
+
+        <div class="campo">
+          <label for="celular">Celular</label>
+          <input type="tel" id="celular" name="celular" inputmode="numeric" maxlength="15" placeholder="(00) 00000-0000" autocomplete="tel-national" required aria-describedby="erro-celular">
+          <span class="erro" id="erro-celular" role="alert"></span>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Endereço</legend>
+
+        <div class="campo">
+          <label for="cep">CEP</label>
+          <input type="text" id="cep" name="cep" inputmode="numeric" maxlength="9" placeholder="00000-000" autocomplete="postal-code" required aria-describedby="erro-cep resultado-cep">
+          <span class="erro" id="erro-cep" role="alert"></span>
+          <p id="resultado-cep" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="campo">
+          <label for="logradouro">Logradouro</label>
+          <input type="text" id="logradouro" name="logradouro" autocomplete="address-line1" required aria-describedby="erro-logradouro">
+          <span class="erro" id="erro-logradouro" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="numero">Número</label>
+          <input type="text" id="numero" name="numero" maxlength="10" required aria-describedby="erro-numero">
+          <span class="erro" id="erro-numero" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="complemento">Complemento <small>(opcional)</small></label>
+          <input type="text" id="complemento" name="complemento" autocomplete="address-line2">
+        </div>
+
+        <div class="campo">
+          <label for="bairro">Bairro</label>
+          <input type="text" id="bairro" name="bairro" required aria-describedby="erro-bairro">
+          <span class="erro" id="erro-bairro" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="cidade">Cidade</label>
+          <input type="text" id="cidade" name="cidade" readonly>
+        </div>
+
+        <div class="campo">
+          <label for="uf">UF</label>
+          <input type="text" id="uf" name="uf" maxlength="2" readonly>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Acesso</legend>
+
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="email" required aria-describedby="erro-email">
+          <span class="erro" id="erro-email" role="alert"></span>
+        </div>
+
+        <div class="campo">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" autocomplete="new-password" required aria-describedby="regras-senha erro-senha">
+          <span class="erro" id="erro-senha" role="alert"></span>
+
+          <ul id="regras-senha" aria-label="Requisitos da senha">
+            <li data-regra="tamanho"><span class="marca" aria-hidden="true">✖</span> Mínimo de 8 caracteres</li>
+            <li data-regra="maiuscula"><span class="marca" aria-hidden="true">✖</span> 1 letra maiúscula</li>
+            <li data-regra="minuscula"><span class="marca" aria-hidden="true">✖</span> 1 letra minúscula</li>
+            <li data-regra="numero"><span class="marca" aria-hidden="true">✖</span> 1 número</li>
+            <li data-regra="especial"><span class="marca" aria-hidden="true">✖</span> 1 caractere especial</li>
+          </ul>
+        </div>
+
+        <div class="campo">
+          <label for="confirmarSenha">Confirmar senha</label>
+          <input type="password" id="confirmarSenha" name="confirmarSenha" autocomplete="new-password" required aria-describedby="erro-confirmarSenha">
+          <span class="erro" id="erro-confirmarSenha" role="alert"></span>
+        </div>
+      </fieldset>
+
+      <button type="submit">Cadastrar</button>
+      <p id="status" role="status" aria-live="polite"></p>
+    </form>
+  </main>
+  <script src="../js/darkmode.js"></script>
+</body>
+</html>
