@@ -1,0 +1,43 @@
+.review-page { flex: 1; width: min(850px, calc(100% - 40px)); margin: 0 auto; padding: 58px 0 80px; }
+.review-page > .section-kicker { color: #135d55; }
+.review-page > h1 { color: #132b35; font-size: clamp(2.5rem, 6vw, 4.4rem); line-height: 1; letter-spacing: -.06em; }
+.review-intro { max-width: 620px; margin-top: 15px; color: #64777b; line-height: 1.7; }
+.review-trip-card { display: flex; align-items: center; gap: 18px; margin: 32px 0 20px; padding: 22px; border: 1px solid #e4e9df; border-radius: 18px; background: #eef1e8; }
+.review-trip-icon { width: 52px; height: 52px; display: grid; flex: 0 0 auto; place-items: center; color: #0b3f3a; background: #c9f27d; border-radius: 16px; font-size: 1.5rem; }
+.review-trip-destination { color: #135d55; font-size: .76rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+.review-trip-card h2 { margin: 3px 0; color: #132b35; font-size: 1.28rem; }
+.review-trip-card div > p:last-child { color: #64777b; font-size: .88rem; }
+.review-form { padding: clamp(22px, 5vw, 42px); border: 1px solid #e4e9df; border-radius: 20px; background: #fff; box-shadow: 0 16px 40px rgb(19 43 53 / 7%); }
+.review-form fieldset { border: 0; }
+.review-form legend { color: #135d55; font-size: .76rem; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+.question-label { margin-top: 22px; color: #132b35; font-weight: 750; }
+.rating-picker { display: flex; gap: 8px; margin-top: 12px; }
+.rating-picker button { width: 48px; height: 48px; border: 1px solid #e4e9df; border-radius: 14px; color: #b4c0b6; background: #fbfcf9; font-size: 1.6rem; cursor: pointer; transition: transform .15s, color .15s, background .15s; }
+.rating-picker button:hover { transform: translateY(-2px); }
+.rating-picker button.selected { color: #9e6b0b; background: #fff5d9; border-color: #f0d898; }
+.rating-label { min-height: 24px; margin: 9px 0 24px; color: #64777b; font-size: .9rem; }
+.comment-label { display: block; margin: 20px 0 8px; color: #344e50; font-size: .88rem; font-weight: 750; }
+.comment-label span { color: #819090; font-weight: 500; }
+.review-form textarea { width: 100%; min-height: 132px; padding: 14px; resize: vertical; color: #132b35; background: #fbfcf9; border: 1px solid #dce4dd; border-radius: 12px; }
+.review-form textarea:focus { outline: 2px solid #135d55; outline-offset: 1px; }
+.field-hint { color: #819090; text-align: right; font-size: .77rem; }
+.recommend-option { display: flex; align-items: center; gap: 10px; margin: 22px 0; color: #344e50; font-size: .9rem; }
+.recommend-option input { width: 18px; height: 18px; accent-color: #135d55; }
+.review-error { min-height: 1.4em; color: #a3332c; font-size: .86rem; }
+.review-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.review-submit, .review-skip { min-height: 48px; padding: 0 20px; border: 0; border-radius: 999px; font-weight: 800; cursor: pointer; }
+.review-submit { color: white; background: #135d55; }
+.review-skip { color: #135d55; background: #eef1e8; }
+.review-status { min-height: 1.4em; margin-top: 12px; color: #135d55; font-size: .9rem; }
+@media (max-width: 600px) { .review-page { width: calc(100% - 32px); padding: 40px 0 60px; } .review-trip-card { align-items: flex-start; padding: 18px; } .review-actions { flex-direction: column; } .review-actions button { width: 100%; } }
+
+/* Page palette: blue accents aligned with the shared GoTogether theme. */
+.review-page > .section-kicker, .review-trip-destination { color: #1479d5; }
+.review-trip-card { background: #eaf4fd; border-color: #dce6f0; }
+.review-trip-icon { color: #fff; background: #1684ed; }
+.review-form { border-color: #dce6f0; }
+.review-form legend { color: #1479d5; }
+.review-form textarea { background: #f7fafd; border-color: #d4e0eb; }
+.recommend-option input { accent-color: #1684ed; }
+.review-submit { background: #1684ed; }
+.review-skip { color: #126ab8; background: #eaf4fd; }

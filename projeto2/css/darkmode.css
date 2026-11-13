@@ -1,0 +1,77 @@
+/* Dark theme overrides and gradual theme transitions. */
+body, .site-header, .brand, .menu a, .dark-mode-btn, .hero-banner, .how-it-works,
+.steps-grid article, .travel-card, .travel-card h3, .travel-card-content > p,
+.form-panel, .form-panel h2, .campo input, .campo textarea, .campo select,
+.trip-filters, .trip-filters button, .viagem, .trip-details-list dd,
+.planner-card, .planner-form, .shopping-form, .planner-field input,
+.shopping-item label, .review-trip-card, .review-form, .review-form textarea,
+.rating-picker button, .recommend-option, .site-footer, .footer-links a {
+  transition: color 600ms ease, background-color 600ms ease, border-color 600ms ease, box-shadow 600ms ease;
+}
+.site-header { transition: transform 280ms ease, color 600ms ease, background-color 600ms ease, border-color 600ms ease; }
+.travel-card, .dark-mode-btn { transition: transform 250ms ease, color 600ms ease, background-color 600ms ease, border-color 600ms ease, box-shadow 600ms ease; }
+
+body.dark-mode {
+  color-scheme: dark;
+  --ink: #edf5fb;
+  --muted: #aabed0;
+  --paper: #101f2e;
+  --line: #30475c;
+  --surface: #193249;
+  background: var(--paper);
+  color: var(--ink);
+}
+body.dark-mode .site-header { color: #fff; background: #091c2e; }
+body.dark-mode .menu a { color: #d3e0e8; }
+body.dark-mode .brand { color: #fff; }
+body.dark-mode .dark-mode-btn { color: #fff; background: #203d57; border-color: #405a70; }
+body.dark-mode .how-it-works { background: #142a3d; }
+body.dark-mode .how-it-works > h2, body.dark-mode .section-heading h2,
+body.dark-mode .travel-card h3, body.dark-mode .form-panel h2,
+body.dark-mode .trips-heading h1, body.dark-mode .itinerary-heading h1,
+body.dark-mode .review-page > h1, body.dark-mode .planner-card-heading h2,
+body.dark-mode .activity-information h3 { color: var(--ink); }
+body.dark-mode .steps-grid article, body.dark-mode .travel-card,
+body.dark-mode .form-panel, body.dark-mode .viagem, body.dark-mode .planner-card,
+body.dark-mode .review-form, body.dark-mode #form-cadastro { color: var(--ink); background: #193249; border-color: #30475c; }
+body.dark-mode .planner-form, body.dark-mode .shopping-form, body.dark-mode .trip-filters { background: #12283a; border-color: #30475c; }
+body.dark-mode .campo input, body.dark-mode .campo textarea, body.dark-mode .campo select,
+body.dark-mode .planner-field input, body.dark-mode .review-form textarea,
+body.dark-mode #form-cadastro input:not([type="radio"]) { color: var(--ink); background: #12283a; border-color: #405a70; }
+body.dark-mode .campo label, body.dark-mode .planner-field label,
+body.dark-mode .shopping-item label, body.dark-mode .recommend-option,
+body.dark-mode #form-cadastro label { color: #d3e0e8; }
+body.dark-mode .trip-details-list dd { color: #d3e0e8; }
+body.dark-mode .trip-description, body.dark-mode .activity-item,
+body.dark-mode .shopping-item { border-color: #30475c; }
+body.dark-mode .trip-filters button { color: #b1c2b8; }
+body.dark-mode .trip-filters button[aria-pressed="true"],
+body.dark-mode .add-button, body.dark-mode .trip-action-button,
+body.dark-mode .submit-trip, body.dark-mode .review-submit { color: #fff; background: #1684ed; }
+body.dark-mode .trip-edit-link, body.dark-mode .review-skip { color: #a8dcff; background: #203d57; }
+body.dark-mode .trip-badge.done { color: #a8dcff; background: #203d57; }
+body.dark-mode .trip-badge:not(.done) { color: #f3d98f; background: #4b4125; }
+body.dark-mode .planner-count { color: #a8dcff; background: #203d57; }
+body.dark-mode .review-trip-card { color: var(--ink); background: #12283a; border-color: #30475c; }
+body.dark-mode .review-trip-card h2, body.dark-mode .question-label { color: var(--ink); }
+body.dark-mode .review-intro, body.dark-mode .rating-label,
+body.dark-mode .itinerary-heading p:last-child, body.dark-mode .itinerary-bottom > p,
+body.dark-mode .trips-heading p:last-child, body.dark-mode .viagem p { color: #b1c2b8; }
+body.dark-mode .empty-state { color: #b1c2b8; background: #193249; border-color: #405a70; }
+body.dark-mode .trip-notice { color: #c5e5ff; background: #203d57; }
+body.dark-mode .form-panel legend, body.dark-mode .section-kicker,
+body.dark-mode .step-progress .step-complete, body.dark-mode .activity-date,
+body.dark-mode .review-trip-destination, body.dark-mode .trip-destination { color: #69bdff !important; }
+body.dark-mode .site-footer { color: #dce9f6; background: #091c2e; }
+
+@media (prefers-reduced-motion: reduce) {
+  body, .site-header, .brand, .menu a, .dark-mode-btn, .hero-banner, .how-it-works,
+  .steps-grid article, .travel-card, .travel-card h3, .travel-card-content > p,
+  .form-panel, .form-panel h2, .campo input, .campo textarea, .campo select,
+  .trip-filters, .trip-filters button, .viagem, .trip-details-list dd,
+  .planner-card, .planner-form, .shopping-form, .planner-field input,
+  .shopping-item label, .review-trip-card, .review-form, .review-form textarea,
+  .rating-picker button, .recommend-option, .site-footer, .footer-links a {
+    transition-duration: .01ms !important;
+  }
+}

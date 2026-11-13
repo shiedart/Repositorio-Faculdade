@@ -1,132 +1,44 @@
-@charset "UTF-8";
+main { width: min(1120px, calc(100% - 40px)); margin: 0 auto; padding: 64px 0 90px; }
+.trips-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 34px; }
+.trips-heading h1 { color: #132b35; font-size: clamp(2.4rem, 5vw, 4rem); line-height: 1; letter-spacing: -.06em; }
+.trips-heading p:last-child { margin-top: 12px; color: #64777b; }
+.trip-filters { display: flex; gap: 8px; margin-bottom: 22px; padding: 6px; width: fit-content; max-width: 100%; overflow-x: auto; border: 1px solid #e4e9df; border-radius: 999px; background: #f0f2eb; }
+.trip-filters button { display: inline-flex; align-items: center; gap: 9px; min-height: 40px; padding: 0 15px; border: 0; border-radius: 999px; color: #64777b; background: transparent; font-size: .83rem; font-weight: 750; white-space: nowrap; cursor: pointer; }
+.trip-filters button[aria-pressed="true"] { color: white; background: #135d55; }
+.trip-filters button span { display: inline-grid; place-items: center; min-width: 21px; height: 21px; padding: 0 5px; border-radius: 99px; background: rgb(19 43 53 / 8%); font-size: .72rem; }
+.trip-filters button[aria-pressed="true"] span { background: rgb(255 255 255 / 18%); }
+.viagens { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.viagem { padding: 26px; border: 1px solid #e4e9df; border-radius: 18px; background: #fff; box-shadow: 0 8px 30px rgb(19 43 53 / 5%); }
+.viagem h2 { margin-bottom: 16px; color: #132b35; font-size: 1.35rem; letter-spacing: -.035em; }
+.viagem p { margin: 9px 0; color: #64777b; line-height: 1.55; overflow-wrap: anywhere; }
+.viagem.concluida { border-color: #bcd6af; }
+.viagem.concluida h2 { color: #66796a; text-decoration: line-through; }
+.viagem .trip-date { color: #135d55; font-size: .88rem; font-weight: 750; }
+.trip-card-top { display: flex; justify-content: flex-end; margin-bottom: 8px; }
+.trip-badge { padding: 5px 10px; color: #76581a; background: #fff1c5; border-radius: 99px; font-size: .72rem; font-weight: 800; }
+.trip-badge.done { color: #135d55; background: #e0f1d8; }
+.trip-destination { color: #135d55 !important; font-weight: 750; }
+.trip-details-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 20px 0; }
+.trip-details-list dt { color: #819090; font-size: .75rem; }
+.trip-details-list dd { margin: 2px 0 0; color: #344e50; font-size: .87rem; font-weight: 700; }
+.trip-description { padding-top: 14px; border-top: 1px solid #e4e9df; white-space: pre-wrap; }
+.acoes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.trip-action-button { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 16px; color: white; background: #135d55; border-radius: 999px; font-size: .85rem; font-weight: 800; text-decoration: none; }
+.trip-edit-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 16px; color: #135d55; background: #eef1e8; border-radius: 999px; font-size: .85rem; font-weight: 800; text-decoration: none; }
+.acoes button { min-height: 42px; padding: 0 16px; border: 0; border-radius: 999px; font-size: .87rem; font-weight: 800; cursor: pointer; }
+.concluir { color: #fff; background: #135d55; }
+.apagar { color: #8b3931; background: #f9e9e4; }
+.empty-state { grid-column: 1 / -1; padding: 52px 26px; color: #64777b; text-align: center; background: #fff; border: 1px dashed #cbd8ce; border-radius: 18px; }
+.empty-state .trip-action { display: inline-block; margin-top: 12px; color: #135d55; font-weight: 800; }
+.trip-notice { margin: -12px 0 24px; padding: 13px 16px; color: #135d55; background: #e0f1d8; border-radius: 10px; font-weight: 700; }
+@media (max-width: 640px) { main { padding: 42px 0 64px; } .trips-heading { align-items: flex-start; flex-direction: column; } .viagens { grid-template-columns: 1fr; } .acoes > button { flex: 1; } }
+.acoes > a { flex: 1; }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f7fa;
-    color: #222;
-}
-
-header {
-    background-color: #0b3d5c;
-    color: white;
-    padding: 25px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header h1 {
-    font-size: 28px;
-}
-
-.botao {
-    background-color: #18a6a6;
-    color: white;
-    text-decoration: none;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-weight: bold;
-}
-
-.botao:hover {
-    background-color: #128989;
-}
-
-main {
-    width: 85%;
-    max-width: 1100px;
-    margin: 40px auto;
-}
-
-.viagens {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.viagem {
-    background-color: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.viagem h2 {
-    color: #0b3d5c;
-    margin-bottom: 15px;
-}
-
-.viagem p {
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.acoes {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.acoes button {
-    border: none;
-    padding: 9px 14px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.concluir {
-    background-color: #18a6a6;
-    color: white;
-}
-
-.concluir:hover {
-    background-color: #128989;
-}
-
-.apagar {
-    background-color: #e74c3c;
-    color: white;
-}
-.apagar:hover {
-    background-color: #c0392b;
-}
-
-.viagem.concluida {
-    border-left: 5px solid #18a6a6;
-    opacity: 0.8;
-}
-.viagem.concluida h2 {
-    text-decoration: line-through;
-}
-.status {
-    color: #18a6a6 !important;
-    font-weight: bold;
-}
-
-@media (max-width: 600px) {
-
-    header {
-        padding: 20px;
-    }
-    header h1 {
-        font-size: 23px;
-    }
-    main {
-        width: 90%;
-    }
-    .acoes {
-        flex-direction: column;
-    }
-    .acoes button {
-        width: 100%;
-    }
-}
+/* Page palette: blue accents aligned with the shared GoTogether theme. */
+.trip-filters { border-color: #dce6f0; background: #eaf2fa; }
+.trip-filters button[aria-pressed="true"], .trip-action-button { background: #1684ed; }
+.trip-action-button:hover { background: #0968c6; }
+.trip-destination, .trip-details-list dd, .empty-state .trip-action { color: #1479d5 !important; }
+.trip-badge.done { color: #1468ae; background: #e4f2ff; }
+.trip-edit-link { color: #126ab8; background: #eaf4fd; }
+.trip-notice { color: #145d9c; background: #e4f2ff; }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Avalie e conclua uma viagem no GoTogether.">
+  <title>Avaliar viagem | GoTogether</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/avaliarviagem.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/darkmode.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegação principal">
+      <a class="brand" href="../index.html">GoTogether</a>
+      <ul class="menu">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../index.html#viagens">Destinos</a></li>
+        <li><a href="criarviagem.html">Criar viagem</a></li>
+        <li><a href="minhas-viagens.html" aria-current="page">Minhas viagens</a></li>
+      </ul>
+      <div class="nav-actions"><button id="darkModeToggle" class="dark-mode-btn" type="button" aria-label="Ativar modo escuro">🌙</button><a href="minhas-viagens.html" class="signup-btn">Voltar às viagens</a></div>
+    </nav>
+  </header>
+
+  <main class="review-page">
+    <p class="section-kicker">FECHANDO O CICLO</p>
+    <h1>A viagem foi boa?</h1>
+    <p class="review-intro">Sua avaliação fica salva junto com a viagem e ajuda o grupo a guardar o que funcionou para a próxima aventura.</p>
+
+    <section class="review-trip-card" aria-labelledby="review-trip-name">
+      <div class="review-trip-icon" aria-hidden="true">✦</div>
+      <div><p class="review-trip-destination" id="review-trip-destination"></p><h2 id="review-trip-name">Escolha uma viagem</h2><p id="review-trip-dates"></p></div>
+    </section>
+
+    <form id="review-form" class="review-form">
+      <fieldset>
+        <legend>Sua experiência</legend>
+        <p class="question-label">Que nota você daria para essa viagem?</p>
+        <div class="rating-picker" role="group" aria-label="Nota da viagem de 1 a 5 estrelas">
+          <button type="button" data-rating="1" aria-label="1 estrela" aria-pressed="false">★</button>
+          <button type="button" data-rating="2" aria-label="2 estrelas" aria-pressed="false">★</button>
+          <button type="button" data-rating="3" aria-label="3 estrelas" aria-pressed="false">★</button>
+          <button type="button" data-rating="4" aria-label="4 estrelas" aria-pressed="false">★</button>
+          <button type="button" data-rating="5" aria-label="5 estrelas" aria-pressed="false">★</button>
+        </div>
+        <p id="rating-label" class="rating-label" aria-live="polite">Selecione de 1 a 5 estrelas</p>
+
+        <label class="comment-label" for="comment">O que você gostaria de registrar? <span>(opcional)</span></label>
+        <textarea id="comment" name="comment" maxlength="600" rows="5" placeholder="Conte o que foi especial, o que aprenderam e o que faria diferente na próxima..."></textarea>
+        <p class="field-hint"><span id="comment-count">0</span>/600</p>
+
+        <label class="recommend-option"><input id="recomendaria" type="checkbox" checked> Eu recomendaria essa viagem para outras pessoas</label>
+        <p id="review-error" class="review-error" role="alert"></p>
+        <div class="review-actions">
+          <button class="review-submit" type="submit">Salvar avaliação e concluir</button>
+          <button class="review-skip" id="finish-without-review" type="button">Concluir sem avaliar</button>
+        </div>
+        <p id="review-status" class="review-status" role="status" aria-live="polite"></p>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer class="site-footer review-footer simple-footer"><p>GoTogether · Cada viagem deixa uma história.</p><a href="minhas-viagens.html">Voltar às minhas viagens</a></footer>
+  <script src="../Js/avaliarviagem.js"></script>
+  <script src="../Js/darkmode.js"></script>
+  <script src="../Js/header.js"></script>
+</body>
+</html>

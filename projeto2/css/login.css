@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+.login-main {
+  display: grid;
+  place-items: center;
+  padding: 56px 20px 72px;
+}
+
+.login-card {
+  width: min(460px, 100%);
+  padding: clamp(28px, 6vw, 48px);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.login-kicker {
+  margin-bottom: 10px;
+  color: var(--brand);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.login-card h1 { color: var(--brand-dark); font-size: clamp(1.8rem, 5vw, 2.3rem); }
+.login-description { margin-top: 12px; color: var(--muted); line-height: 1.6; }
+.login-card form { display: grid; gap: 18px; margin-top: 28px; }
+.login-field { display: grid; gap: 7px; }
+.login-field label { color: var(--ink); font-size: .9rem; font-weight: 700; }
+.login-field input { min-height: 46px; padding: 10px 12px; color: var(--ink); border: 1px solid #bcccdc; border-radius: 6px; background: var(--surface); }
+.login-field input[aria-invalid="true"] { border-color: #b42318; }
+.login-card form > button { min-height: 46px; color: #fff; background: var(--brand); border: 0; border-radius: 7px; font-weight: 750; cursor: pointer; }
+.login-card form > button:hover { background: #0968c6; }
+.login-card .erro, .login-error { color: #b42318; font-size: .88rem; }
+#status-login { min-height: 1.4em; color: #087443; }
+.login-signup { margin-top: 20px; color: var(--muted); font-size: .9rem; text-align: center; }
+.login-signup a { color: var(--brand); font-weight: 700; }
+
+body.dark-mode .login-card { color: var(--ink); background: #193249; border-color: #30475c; }
+body.dark-mode .login-card h1 { color: #e8f1f8; }
+body.dark-mode .login-field input { background: #12283a; border-color: #405a70; }
+
+@media (max-width: 600px) { .login-main { padding: 36px 16px 52px; } }
