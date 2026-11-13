@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consulte e atualize seus dados da conta GoTogether.">
+  <title>Meu perfil | GoTogether</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/perfil.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/darkmode.css">
+  <script src="../Js/perfil.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegação principal">
+      <a class="brand" href="../index.html">GoTogether</a>
+      <ul class="menu">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="criarviagem.html">Planejar</a></li>
+        <li><a href="minhas-viagens.html">Minhas viagens</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="darkModeToggle" class="dark-mode-btn" type="button" aria-label="Ativar modo escuro">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="profile-main">
+    <section class="profile-card" aria-labelledby="profile-title">
+      <div class="profile-heading">
+        <div class="profile-avatar" id="profile-avatar" aria-hidden="true">G</div>
+        <div>
+          <p class="section-kicker">SUA CONTA</p>
+          <h1 id="profile-title">Meu perfil</h1>
+          <p class="profile-intro">Consulte e atualize seus dados pessoais.</p>
+        </div>
+      </div>
+
+      <form id="form-perfil">
+        <div class="profile-fields">
+          <div class="profile-field">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" autocomplete="given-name" required disabled>
+          </div>
+          <div class="profile-field">
+            <label for="sobrenome">Sobrenome</label>
+            <input id="sobrenome" name="sobrenome" autocomplete="family-name" required disabled>
+          </div>
+          <div class="profile-field">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" required disabled>
+          </div>
+          <div class="profile-field">
+            <label for="celular">Celular</label>
+            <input id="celular" name="celular" type="tel" autocomplete="tel-national" disabled>
+          </div>
+          <div class="profile-field">
+            <label for="cidade">Cidade</label>
+            <input id="cidade" name="cidade" disabled>
+          </div>
+          <div class="profile-field">
+            <label for="uf">Estado</label>
+            <input id="uf" name="uf" disabled>
+          </div>
+        </div>
+        <p id="profile-status" role="status" aria-live="polite"></p>
+        <div class="profile-actions">
+          <button id="edit-profile" class="secondary-btn" type="button">Editar perfil</button>
+          <button id="cancel-edit" class="secondary-btn" type="button" hidden>Cancelar</button>
+          <button id="save-profile" class="primary-btn" type="submit" hidden>Salvar alterações</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer simple-footer">
+    <p>GoTogether · Planeje junto. Viaje melhor.</p>
+    <a href="../index.html">Voltar ao início</a>
+  </footer>
+  <script src="../Js/darkmode.js"></script>
+  <script src="../Js/header.js"></script>
+</body>
+</html>

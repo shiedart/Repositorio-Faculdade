@@ -1,178 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/criarviagem.css">
-    <link rel="stylesheet" href="../css/index.css">
-    <title>Criar Nova Viagem</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organize os detalhes da sua próxima viagem em grupo.">
+  <title>Criar viagem | GoTogether</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/criarviagem.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/darkmode.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegação principal">
+      <a class="brand" href="../index.html">GoTogether</a>
+      <ul class="menu">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="../index.html#viagens">Destinos</a></li>
+        <li><a href="criarviagem.html" aria-current="page">Criar viagem</a></li>
+        <li><a href="minhas-viagens.html">Minhas viagens</a></li>
+        <li><a href="../index.html#como-funciona">Como funciona</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="darkModeToggle" class="dark-mode-btn" type="button" aria-label="Ativar modo escuro">🌙</button>
+        <a href="minhas-viagens.html" class="login-btn">Minhas viagens</a>
+        <a href="cadastro.html" class="signup-btn">Criar conta</a>
+      </div>
+    </nav>
+  </header>
 
-    <header class="site-header">
-        <nav class="navbar">
-          <a class="brand" href="../index.html" aria-label="GoTogether - pagina inicial">GoTogether</a>
-    
-          <ul class="menu">
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="criarviagem.html">Criar Viagens</a></li>
-            <li><a href="minhas-viagens.html">Minhas viagens</a></li>
-            <li><a href="#como-funciona">Como funciona</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-          </ul>
-    
-          <div class="nav-actions">
-            <a href="login.html" class="login-btn">Login</a>
-            <a href="cadastro.html" class="signup-btn">Cadastro</a>
+  <main class="pagina">
+    <aside class="card-lateral">
+      <div class="imagem"><img src="../imagens/bondinhorj.jpeg" alt="Bondinho do Rio de Janeiro ao entardecer"></div>
+      <div class="mensagem">
+        <p class="form-eyebrow">TIRE A IDEIA DO PAPEL</p>
+        <h1>Planos bons ficam ainda melhores juntos.</h1>
+        <p>Reúna os detalhes da viagem e compartilhe um plano claro com todo mundo.</p>
+      </div>
+      <p class="frase">✦ Uma viagem boa começa com bons planos.</p>
+    </aside>
+
+    <section class="form-panel" aria-labelledby="form-title">
+      <form id="trip-form">
+        <fieldset>
+          <legend>PLANEJAMENTO DO GRUPO</legend>
+          <h2 id="form-title">Criar uma viagem</h2>
+          <p class="subtitulo">Preencha os detalhes principais. Você poderá consultar e atualizar o plano em Minhas viagens.</p>
+
+          <div class="linha">
+            <div class="campo campo-wide"><label for="nome">Nome da viagem</label><input type="text" id="nome" name="nome" maxlength="80" placeholder="Ex.: Férias em família" required></div>
           </div>
-        </nav>
-      </header>
+          <div class="linha">
+            <div class="campo"><label for="destino">Destino</label><input type="text" id="destino" name="destino" maxlength="100" placeholder="Ex.: Rio de Janeiro, RJ" required></div>
+            <div class="campo"><label for="participantes">Pessoas no grupo</label><input type="number" id="participantes" name="participantes" min="1" max="100" value="2" required></div>
+          </div>
+          <div class="linha">
+            <div class="campo"><label for="data_inicio">Data de ida</label><input type="date" id="data_inicio" name="data_inicio" required></div>
+            <div class="campo"><label for="data_fim">Data de volta</label><input type="date" id="data_fim" name="data_fim" required></div>
+          </div>
+          <div class="linha">
+            <div class="campo"><label for="orcamento">Orçamento por pessoa (R$)</label><input type="number" id="orcamento" name="orcamento" min="0" step="0.01" placeholder="Ex.: 2500" required><small class="field-hint" id="budget-preview">Estimativa total do grupo: —</small></div>
+            <div class="campo"><label for="transporte">Transporte</label><select id="transporte" name="transporte" required><option value="">Selecione</option><option>Carro</option><option>Ônibus</option><option>Avião</option><option>Outro / a definir</option></select></div>
+          </div>
+          <div class="linha">
+            <div class="campo"><label for="hospedagem">Hospedagem <span>(opcional)</span></label><input type="text" id="hospedagem" name="hospedagem" maxlength="120" placeholder="Hotel, casa alugada, ainda decidindo..."></div>
+          </div>
+          <div class="linha">
+            <div class="campo"><label for="descricao">Roteiro e observações</label><textarea id="descricao" name="descricao" maxlength="1000" rows="5" placeholder="Ideias de passeios, horários, itens para combinar com o grupo..." required></textarea><small class="field-hint"><span id="description-count">0</span>/1000 caracteres</small></div>
+          </div>
+          <p class="form-error" id="form-error" role="alert"></p>
+          <button class="submit-trip" type="submit">Salvar planejamento <span aria-hidden="true">↗</span></button>
+        </fieldset>
+      </form>
+    </section>
+  </main>
 
-
-    <div class="pagina">
-
-        <div class="card-lateral">
-
-            <div class="imagem">
-                <img src="../imagens/bondinhorj.jpeg" alt="Imagem de viagem">
-            </div>
-
-            <div class="mensagem">
-                <h2>Transforme planos<br>em histórias reais</h2>
-
-                <p>
-                    Crie sua viagem, reúna seu grupo
-                    e viva novas experiências!
-                </p>
-            </div>
-
-            <p class="frase">
-                ✈️ Viagens em grupo são mais divertidas!
-            </p>
-
-        </div>
-
-        <section>
-
-            <form action="#" method="POST">
-
-                <fieldset>
-
-                    <legend>Informações da Viagem</legend>
-
-                    <h1> Criar Nova Viagem</h1>
-
-                    <p class="subtitulo">
-                        Preencha as informações abaixo para planejar
-                        sua próxima aventura com o seu grupo!
-                    </p>
-
-                    <div class="linha">
-
-                        <div class="campo">
-                            <label for="nome">Nome da viagem</label>
-
-                            <input
-                                type="text"
-                                id="nome"
-                                name="nome"
-                                placeholder="Ex: Férias em Gramado"
-                                required
-                            >
-                        </div>
-
-                    </div>
-
-                    <div class="linha">
-
-                        <div class="campo">
-                            <label for="destino">Destino</label>
-
-                            <input
-                                type="text"
-                                id="destino"
-                                name="destino"
-                                placeholder="Ex: Rio de Janeiro"
-                                required
-                            >
-                        </div>
-
-                    </div>
-
-
-                    <div class="linha">
-
-                        <div class="campo">
-                            <label for="data_inicio">Data de início</label>
-
-                            <input
-                                type="date"
-                                id="data_inicio"
-                                name="data_inicio"
-                                required
-                            >
-                        </div>
-
-
-                        <div class="campo">
-                            <label for="data_fim">Data de fim</label>
-
-                            <input
-                                type="date"
-                                id="data_fim"
-                                name="data_fim"
-                                required
-                            >
-                        </div>
-
-                    </div>
-
-
-                    <div class="linha">
-
-                        <div class="campo">
-                            <label for="orcamento">Orçamento</label>
-
-                            <input
-                                type="number"
-                                id="orcamento"
-                                name="orcamento"
-                                placeholder="Ex: 2500"
-                                required
-                            >
-                        </div>
-
-                    </div>
-
-
-                    <div class="linha">
-
-                        <div class="campo">
-                            <label for="descricao">Descrição</label>
-
-                            <textarea
-                                id="descricao"
-                                name="descricao"
-                                rows="4"
-                                placeholder="Conte um pouco sobre essa viagem..."
-                                required
-                            ></textarea>
-                        </div>
-
-                    </div>
-
-                    <input
-                        type="submit"
-                        value="✈️ Criar Viagem"
-                    >
-
-                </fieldset>
-            </form>
-        </section>
-    </div>
-    <script src="../Js/criarviagem.js"></script>
+  <footer class="site-footer form-footer simple-footer"><p>GoTogether · Seus planos de viagem em um só lugar.</p><a href="../index.html">Voltar ao início</a></footer>
+  <script src="../Js/criarviagem.js"></script>
+  <script src="../Js/darkmode.js"></script>
+  <script src="../Js/header.js"></script>
 </body>
-
 </html>

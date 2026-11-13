@@ -1,0 +1,17 @@
+.registration-main { width: min(760px, calc(100% - 32px)); margin: 48px auto 80px; }
+.registration-main { flex: 1; }
+.registration-main h1 { margin-bottom: 24px; color: #102a43; }
+#form-cadastro { display: grid; gap: 20px; padding: clamp(18px, 4vw, 32px); background: #fff; border: 1px solid #d9e2ec; border-radius: 12px; box-shadow: 0 8px 24px rgb(16 42 67 / 8%); }
+#form-cadastro fieldset { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 20px; border: 1px solid #d9e2ec; border-radius: 8px; }
+#form-cadastro legend { padding: 0 8px; color: #1c4db3; font-weight: 800; }
+#form-cadastro .campo { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+#form-cadastro .campo:has(input[type="radio"]) { grid-column: 1 / -1; }
+#form-cadastro label { color: #334e68; font-weight: 700; }
+#form-cadastro input:not([type="radio"]), #form-cadastro button { min-height: 44px; padding: 10px 12px; border: 1px solid #bcccdc; border-radius: 6px; font: inherit; }
+#form-cadastro input:focus { outline: 2px solid #1c4db3; outline-offset: 1px; }
+#form-cadastro .erro { color: #b42318; font-size: .85rem; }
+#regras-senha { grid-column: 1 / -1; padding-left: 20px; color: #627d98; font-size: .9rem; }
+#regras-senha .valida { color: #087443; }
+#form-cadastro > button { color: white; background: #1c4db3; border: 0; font-weight: 700; cursor: pointer; }
+#status, #resultado-cep { color: #087443; }
+@media (max-width: 600px) { #form-cadastro fieldset { grid-template-columns: 1fr; padding: 16px; } }

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Monte o roteiro e a lista de itens necessários para sua viagem.">
+  <title>Roteiro da viagem | GoTogether</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/roteiro.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/darkmode.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar" aria-label="Navegação principal">
+      <a class="brand" href="../index.html">GoTogether</a>
+      <ul class="menu">
+        <li><a href="../index.html">Início</a></li>
+        <li><a href="criarviagem.html">Criar viagem</a></li>
+        <li><a href="minhas-viagens.html" aria-current="page">Minhas viagens</a></li>
+      </ul>
+      <div class="nav-actions"><button id="darkModeToggle" class="dark-mode-btn" type="button" aria-label="Ativar modo escuro">🌙</button><a href="minhas-viagens.html" class="signup-btn">Minhas viagens</a></div>
+    </nav>
+  </header>
+
+  <main class="itinerary-page">
+    <nav class="step-progress" aria-label="Etapas do planejamento"><span class="step-complete">1 · Dados da viagem</span><span aria-hidden="true">→</span><strong aria-current="step">2 · Roteiro e checklist</strong></nav>
+    <header class="itinerary-heading">
+      <div><p class="section-kicker">ETAPA 2 · PLANEJAMENTO</p><h1>Agora, os detalhes da aventura.</h1><p id="trip-summary">Organize passeios e itens que o grupo precisa levar.</p></div>
+    </header>
+
+    <div class="itinerary-grid">
+      <section class="planner-card" aria-labelledby="activities-title">
+        <div class="planner-card-heading"><div><p class="section-kicker">POR DATA</p><h2 id="activities-title">Roteiro de passeios</h2></div><span class="planner-count" id="activity-count">0 passeios</span></div>
+        <form id="activity-form" class="planner-form">
+          <div class="planner-fields">
+            <div class="planner-field planner-field-wide"><label for="activity-name">Passeio ou atividade</label><input id="activity-name" name="nome" maxlength="100" placeholder="Ex.: trilha no parque, visita ao museu" required></div>
+            <div class="planner-field"><label for="activity-date">Data</label><input id="activity-date" name="data" type="date" required></div>
+            <div class="planner-field"><label for="activity-time">Horário <span>(opcional)</span></label><input id="activity-time" name="horario" type="time"></div>
+            <div class="planner-field planner-field-wide"><label for="activity-notes">Observações <span>(opcional)</span></label><input id="activity-notes" name="observacoes" maxlength="240" placeholder="Endereço, reserva, ponto de encontro..."></div>
+          </div>
+          <button class="add-button" type="submit">+ Adicionar ao roteiro</button>
+        </form>
+        <div id="activity-list" class="activity-list" aria-live="polite"></div>
+      </section>
+
+      <section class="planner-card checklist-card" aria-labelledby="checklist-title">
+        <div class="planner-card-heading"><div><p class="section-kicker">NADA FICA PARA TRÁS</p><h2 id="checklist-title">Compras e itens para levar</h2></div><span class="planner-count" id="shopping-count">0/0</span></div>
+        <form id="shopping-form" class="shopping-form">
+          <div class="planner-field"><label for="shopping-name">O que precisa comprar ou levar?</label><input id="shopping-name" name="nome" maxlength="100" placeholder="Ex.: protetor solar, remédios..." required></div>
+          <div class="shopping-add-row"><div class="planner-field"><label for="shopping-quantity">Quantidade</label><input id="shopping-quantity" name="quantidade" type="number" min="1" max="999" value="1" required></div><button class="add-button" type="submit">Adicionar item</button></div>
+        </form>
+        <ul id="shopping-list" class="shopping-list" aria-live="polite"></ul>
+        <p class="checklist-hint">Marque cada item conforme o grupo for se organizando.</p>
+      </section>
+    </div>
+
+    <div class="itinerary-bottom"><p id="save-status" role="status" aria-live="polite">As alterações são salvas automaticamente.</p><a class="primary-btn" href="minhas-viagens.html">Salvar e voltar às viagens <span aria-hidden="true">↗</span></a></div>
+  </main>
+
+  <footer class="site-footer itinerary-footer simple-footer"><p>GoTogether · Um bom roteiro deixa espaço para boas surpresas.</p><a href="minhas-viagens.html">Minhas viagens</a></footer>
+  <script src="../Js/roteiro.js"></script>
+  <script src="../Js/darkmode.js"></script>
+  <script src="../Js/header.js"></script>
+</body>
+</html>

@@ -209,61 +209,6 @@ async function buscarCEP() {
   validarCampo('cep');
 }
 
-function salvarCookie(nome, valor, dias = DIAS_COOKIE) {
-  const expira = new Date(Date.now() + dias * 24 * 60 * 60 * 1000).toUTCString();
-  const secure = location.protocol === 'https:' ? '; Secure' : '';
-  document.cookie = `${PREFIXO_COOKIE}${nome}=${encodeURIComponent(valor)}; expires=${expira}; path=/; SameSite=Lax${secure}`;
-}
-
-function lerCookie(nome) {
-  const prefixo = `${PREFIXO_COOKIE}${nome}=`;
-  const item = document.cookie.split('; ').find((c) => c.startsWith(prefixo));
-  return item ? decodeURIComponent(item.slice(prefixo.length)) : '';
-}
-
-const CHAVE_STORAGE = 'cadastro';
-
-function salvarNoLocalStorage(dados) {
-  try {
-    localStorage.setItem(CHAVE_STORAGE, JSON.stringify(dados));
-    return true;
-  } catch (e) {
-    console.error('Não foi possível salvar no localStorage:', e);
-    return false;
-  }
-}
-
-function lerDoLocalStorage() {
-  try {
-    const bruto = localStorage.getItem(CHAVE_STORAGE);
-    return bruto ? JSON.parse(bruto) : null;
-  } catch (e) {
-    return null;
-  }
-}
-
-function salvarDados() {
-  const dados = {
-    nome: $('nome').value.trim(),
-    sobrenome: $('sobrenome').value.trim(),
-    cpf: $('cpf').value,
-    nascimento: $('nascimento').value,
-    genero: document.querySelector('input[name="genero"]:checked').value,
-    celular: $('celular').value,
-    cep: $('cep').value,
-    logradouro: $('logradouro').value.trim(),
-    numero: $('numero').value.trim(),
-    complemento: $('complemento').value.trim(),
-    bairro: $('bairro').value.trim(),
-    cidade: $('cidade').value,
-    uf: $('uf').value,
-    email: $('email').value.trim()
-  };
-
-  Object.entries(dados).forEach(([chave, valor]) => salvarCookie(chave, valor));
-  return salvarNoLocalStorage(dados);
-}
-
 const form = $('form-cadastro');
 
 const mascaras = { cpf: mascaraCPF, celular: mascaraCelular, cep: mascaraCEP };
@@ -302,7 +247,7 @@ form.addEventListener('focusout', (e) => {
   validarCampo(campo.name);
 });
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const status = $('status');
 
@@ -315,15 +260,42 @@ form.addEventListener('submit', (e) => {
     return;
   }
 
-  const salvoNoStorage = salvarDados();
-  status.textContent = salvoNoStorage
-    ? 'Cadastro realizado! Dados salvos nos cookies e no localStorage.'
-    : 'Cadastro realizado! Dados salvos nos cookies (não foi possível usar o localStorage).';
-  form.reset();
-  limparEndereco();
-  estadoCEP.ok = false;
-  estadoCEP.erro = '';
-  atualizarRegrasSenha();
+  // Aguarda a consulta do CEP antes de enviar o cadastro.
+  if (!estadoCEP.ok) {
+    status.textContent = 'Aguarde a validação do CEP antes de continuar.';
+    $('cep').focus();
+    return;
+  }
+
+  const botao = form.querySelector('button[type="submit"], input[type="submit"]');
+  if (botao) botao.disabled = true;
+  status.textContent = 'Enviando cadastro...';
+
+  try {
+    const resposta = await fetch('../php/cadastrar.php', {
+      method: 'POST',
+      body: new FormData(form)
+    });
+
+    const resultado = await resposta.json();
+
+    if (!resposta.ok || !resultado.sucesso) {
+      status.textContent = resultado.mensagem || 'Não foi possível realizar o cadastro.';
+      return;
+    }
+
+    status.textContent = resultado.mensagem || 'Cadastro realizado com sucesso!';
+    form.reset();
+    limparEndereco();
+    estadoCEP.ok = false;
+    estadoCEP.erro = '';
+    atualizarRegrasSenha();
+  } catch (erro) {
+    console.error('Erro ao enviar cadastro:', erro);
+    status.textContent = 'Não foi possível conectar ao servidor. Verifique se o Apache está ligado.';
+  } finally {
+    if (botao) botao.disabled = false;
+  }
 });
 
 const limites = limitesNascimento();
