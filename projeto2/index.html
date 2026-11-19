@@ -3,120 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Planeje viagens em grupo com a GoTogether. Organize destino, datas e orçamento em um só lugar.">
+  <title>GoTogether | Viajar junto faz o caminho</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/index.css">
-  <title>GoTogether</title>
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/darkmode.css">
 </head>
 <body>
   <header class="site-header">
-    <nav class="navbar">
-      <a class="brand" href="index.html" aria-label="GoTogether - pagina inicial">GoTogether</a>
-
+    <nav class="navbar" aria-label="Navegação principal">
+      <a class="brand" href="index.html" aria-label="GoTogether - início">GoTogether</a>
       <ul class="menu">
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="html/criarviagem.html">Criar Viagens</a></li>
+        <li><a href="index.html" aria-current="page">Início</a></li>
+        <li><a href="#viagens">Destinos</a></li>
+        <li><a href="html/criarviagem.html">Planejar</a></li>
         <li><a href="html/minhas-viagens.html">Minhas viagens</a></li>
         <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#sobre">Sobre</a></li>
       </ul>
-
       <div class="nav-actions">
-        <a href="login.html" class="login-btn">Login</a>
-        <a href="cadastro.html" class="signup-btn">Cadastro</a>
+        <button id="darkModeToggle" class="dark-mode-btn" type="button" aria-label="Ativar modo escuro">🌙</button>
+        <a href="html/login.html" class="login-btn">Entrar</a>
+        <a href="html/cadastro.html" class="signup-btn">Criar conta <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
   </header>
 
-  <main>
+  <main class="home-main">
     <section class="hero-banner" aria-labelledby="hero-title">
       <div class="hero-content">
-        <p class="hero-kicker">VIAJE DO SEU JEITO</p>
-        <h1 id="hero-title">Juntos, as melhores<br>viagens são mais incriveis.</h1>
-        <p class="hero-text">Planeje, organize e viva experiências inesquecíveis<br>
-            com seus amigos. A plataforma perfeita para<br>
-            criar e gerenciar viagens em grupo.</p>
-
+        <p class="hero-kicker">Menos planilhas, mais histórias</p>
+        <h1 id="hero-title">Viajar junto<br>faz o caminho.</h1>
+        <p class="hero-text">Planeje a próxima aventura com seu grupo. Organize datas, destinos e orçamento em um só lugar — e deixe a parte boa começar antes mesmo de sair.</p>
         <div class="hero-actions">
-          <a class="primary-btn" href="#viagens">Começar agora</a>
-          <a class="secondary-btn" href="#como-funciona">Como funciona</a>
+          <a class="primary-btn" href="html/criarviagem.html">Planejar uma viagem <span aria-hidden="true">↗</span></a>
+          <a class="secondary-btn" href="#viagens">Explorar destinos</a>
         </div>
+        <p class="hero-note"><span><strong>Uma viagem boa</strong> começa com bons planos.</span></p>
+      </div>
+    </section>
+
+    <section class="how-it-works" id="como-funciona" aria-labelledby="how-title">
+      <p class="section-kicker">Simples de organizar</p>
+      <h2 id="how-title">Do primeiro “vamos?” ao embarque.</h2>
+      <div class="steps-grid">
+        <article><span>01 / ESCOLHA</span><h3>Sonhe o destino</h3><p>Escolha para onde ir e dê forma à ideia que todo mundo está esperando.</p></article>
+        <article><span>02 / COMBINE</span><h3>Alinhe o grupo</h3><p>Junte datas, orçamento e informações importantes sem perder nada pelo caminho.</p></article>
+        <article><span>03 / APROVEITE</span><h3>Viva a viagem</h3><p>Acompanhe os planos e guarde energia para as histórias que vêm pela frente.</p></article>
       </div>
     </section>
 
     <section class="featured-trips" id="viagens" aria-labelledby="featured-title">
       <div class="section-heading">
-        <div>
-          <p class="section-kicker">DESTINOS EM DESTAQUE</p>
-          <h2 id="featured-title">Encontre a proxima viagem do grupo.</h2>
-        </div>
-        <a class="see-all-link" href="#viagens">Ver todas as viagens</a>
+        <div><p class="section-kicker">Inspiração para o grupo</p><h2 id="featured-title">Ideias que já dão vontade de fazer as malas.</h2></div>
+        <a class="see-all-link" href="html/criarviagem.html">Criar meu roteiro <span aria-hidden="true">↗</span></a>
       </div>
-
       <div class="travel-grid">
         <article class="travel-card">
           <img src="imagens/rjdejaneiro.jpg" alt="Vista da cidade do Rio de Janeiro">
-          <div class="travel-card-content">
-            <div class="travel-card-meta">
-              <span>Rio de Janeiro, RJ</span>
-              <span>4 dias</span>
-            </div>
-            <h3>Fim de semana no Rio</h3>
-            <p>Praia, passeios e uma agenda feita para aproveitar junto.</p>
-            <div class="travel-card-footer">
-              <strong>A partir de R$ 680</strong>
-              <a href="#viagens">Ver viagem</a>
-            </div>
-          </div>
+          <div class="travel-card-content"><div class="travel-card-meta"><span>Rio de Janeiro, RJ</span><span>4 dias</span></div><h3>Fim de semana no Rio</h3><p>Praia, passeios e uma agenda feita para aproveitar junto.</p><div class="travel-card-footer"><strong>A partir de R$ 680</strong><a href="html/criarviagem.html?destino=Rio%20de%20Janeiro">Montar roteiro ↗</a></div></div>
         </article>
-
         <article class="travel-card">
-          <img src="imagens/camposdojordao.jpg" alt="Paisagem montanhosa em Campos do Jordao">
-          <div class="travel-card-content">
-            <div class="travel-card-meta">
-              <span>Campos do Jordao, SP</span>
-              <span>3 dias</span>
-            </div>
-            <h3>Inverno na serra</h3>
-            <p>Um roteiro aconchegante com natureza e boa gastronomia.</p>
-            <div class="travel-card-footer">
-              <strong>A partir de R$ 540</strong>
-              <a href="#viagens">Ver viagem</a>
-            </div>
-          </div>
+          <img src="imagens/camposdojordao.jpg" alt="Paisagem montanhosa em Campos do Jordão">
+          <div class="travel-card-content"><div class="travel-card-meta"><span>Campos do Jordão, SP</span><span>3 dias</span></div><h3>Inverno na serra</h3><p>Um roteiro aconchegante com natureza e boa gastronomia.</p><div class="travel-card-footer"><strong>A partir de R$ 540</strong><a href="html/criarviagem.html?destino=Campos%20do%20Jord%C3%A3o">Montar roteiro ↗</a></div></div>
         </article>
-
         <article class="travel-card">
-          <img src="imagens/maceio.jpg" alt="Mar azul de uma praia em Maceio">
-          <div class="travel-card-content">
-            <div class="travel-card-meta">
-              <span>Maceio, AL</span>
-              <span>6 dias</span>
-            </div>
-            <h3>Ferias no litoral</h3>
-            <p>Mar tranquilo, dias leves e espaco para criar boas memorias.</p>
-            <div class="travel-card-footer">
-              <strong>A partir de R$ 1.180</strong>
-              <a href="#viagens">Ver viagem</a>
-            </div>
-          </div>
+          <img src="imagens/maceio.jpg" alt="Mar azul de uma praia em Maceió">
+          <div class="travel-card-content"><div class="travel-card-meta"><span>Maceió, AL</span><span>6 dias</span></div><h3>Férias no litoral</h3><p>Mar tranquilo, dias leves e espaço para criar boas memórias.</p><div class="travel-card-footer"><strong>A partir de R$ 1.180</strong><a href="html/criarviagem.html?destino=Macei%C3%B3">Montar roteiro ↗</a></div></div>
         </article>
       </div>
     </section>
+
+    <section class="cta-band" aria-labelledby="cta-title">
+      <div><h2 id="cta-title">A viagem de vocês pode começar hoje.</h2><p>Crie um plano, chame o grupo e tire a ideia do papel.</p></div>
+      <a class="primary-btn" href="html/criarviagem.html">Começar a planejar ↗</a>
+    </section>
   </main>
 
-  <footer class="site-footer" id="sobre">
+  <footer class="site-footer home-footer" id="sobre">
     <div class="footer-content">
-      <div class="footer-brand">
-        <a class="brand" href="index.html">GoTogether</a>
-        <p>Viagens em grupo, organizadas em um so lugar.</p>
-      </div>
-
-      <div class="footer-links">
-        <a href="minhas-viagens.html">Minhas viagens</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="login.html">Entrar</a>
-      </div>
+      <div class="footer-brand"><a class="brand" href="index.html">GoTogether</a><p>Viagens em grupo, organizadas em um só lugar. Feito para transformar planos em histórias.</p></div>
+      <nav class="footer-links" aria-label="Links do rodapé"><a href="html/minhas-viagens.html">Minhas viagens</a><a href="html/criarviagem.html">Criar viagem</a><a href="html/login.html">Entrar</a><a href="html/cadastro.html">Criar conta</a></nav>
     </div>
-    <p class="copyright">Copyright 2026 GoTogether. Todos os direitos reservados.</p>
+    <p class="copyright">© 2026 GoTogether. Feito para viajar junto.</p>
   </footer>
+  <script src="Js/darkmode.js"></script>
+  <script src="Js/header.js"></script>
 </body>
 </html>
